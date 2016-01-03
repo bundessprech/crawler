@@ -1,5 +1,6 @@
 package de.dtonal.bundessprech;
 
+import java.io.File;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -45,33 +46,37 @@ public class CrawlerApplication {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 
-		} 
-//		addEmployee("TORBEN", "MUELLER", 1);
+		}
+
+		File csvFile = new File("C:\\Users\\dtonal_user\\Downloads\\person.csv");
+		if (csvFile != null) {
+			CsvParser.readFromCsvFile(csvFile);
+		}
 		for (int i = 0; i < 5; i++) {
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXX");
 		}
 
 	}
-//	  /* Method to CREATE an employee in the database */
-//	   public static Integer addEmployee(String fname, String lname, int id){
-//	      Session session = sessionFactory.openSession();
-//	      Transaction tx = null;
-//	      Integer employeeID = null;
-//	      try{
-//	         tx = session.beginTransaction();
-//	         Person person = new Person();
-//	         person.setPrename(fname);
-//	         person.setSurname(lname);
-//	         person.setId(id);
-//	         person.setGender(Gender.FEMALE);
-//	         employeeID = (Integer) session.save(person); 
-//	         tx.commit();
-//	      }catch (HibernateException e) {
-//	         if (tx!=null) tx.rollback();
-//	         e.printStackTrace(); 
-//	      }finally {
-//	         session.close(); 
-//	      }
-//	      return employeeID;
-//	   }
+	// /* Method to CREATE an employee in the database */
+	// public static Integer addEmployee(String fname, String lname, int id){
+	// Session session = sessionFactory.openSession();
+	// Transaction tx = null;
+	// Integer employeeID = null;
+	// try{
+	// tx = session.beginTransaction();
+	// Person person = new Person();
+	// person.setPrename(fname);
+	// person.setSurname(lname);
+	// person.setId(id);
+	// person.setGender(Gender.FEMALE);
+	// employeeID = (Integer) session.save(person);
+	// tx.commit();
+	// }catch (HibernateException e) {
+	// if (tx!=null) tx.rollback();
+	// e.printStackTrace();
+	// }finally {
+	// session.close();
+	// }
+	// return employeeID;
+	// }
 }
