@@ -1,6 +1,7 @@
 package de.dtonal.bundessprech;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -14,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import de.dtonal.bundessprech.data.Gender;
 import de.dtonal.bundessprech.data.Person;
+import de.dtonal.bundessprech.db.HibernateDbAccess;
 
 @SpringBootApplication
 public class CrawlerApplication {
@@ -21,36 +23,10 @@ public class CrawlerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrawlerApplication.class, args);
-		for (int i = 0; i < 5; i++) {
-			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXX");
-		}
-		System.out.println("STARTED");
-		Configuration cfg = new Configuration();
 
-		System.out.println("GO CONFIG");
-
-		Session session = null;
-
-		try {
-
-			Configuration configuration = new Configuration();
-
-			configuration.configure("hibernate.cfg.xml");
-			configuration.addAnnotatedClass(Person.class);
-
-			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-					.applySettings(configuration.getProperties()).build();
-
-			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-
-		}
-
-		File csvFile = new File("C:\\Users\\dtonal_user\\Downloads\\person.csv");
+		File csvFile = new File("person.csv");
 		if (csvFile != null) {
-			CsvParser.readFromCsvFile(csvFile);
+			ArrayList<Person> persons = CsvParser.readFromCsvFile(csvFile);
 		}
 		for (int i = 0; i < 5; i++) {
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXX");

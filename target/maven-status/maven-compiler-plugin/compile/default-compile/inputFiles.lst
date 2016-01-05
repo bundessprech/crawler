@@ -1,6 +1,10 @@
-/home/dtonal/dev/crawler/src/main/java/de/dtonal/bundessprech/data/Person.java
-/home/dtonal/dev/crawler/src/main/java/de/dtonal/bundessprech/data/State.java
-/home/dtonal/dev/crawler/src/main/java/de/dtonal/bundessprech/data/Gender.java
-/home/dtonal/dev/crawler/src/main/java/de/dtonal/bundessprech/CrawlerApplication.java
-/home/dtonal/dev/crawler/src/main/java/de/dtonal/bundessprech/data/Party.java
-/home/dtonal/dev/crawler/src/main/java/de/dtonal/bundessprech/data/Faction.java
+/home/dtonal/dev/git/crawler/src/main/java/de/dtonal/bundessprech/db/HibernateDbAccess.java
+/home/dtonal/dev/git/crawler/src/main/java/de/dtonal/bundessprech/db/IPersonDomain.java
+/home/dtonal/dev/git/crawler/src/main/java/de/dtonal/bundessprech/data/Gender.java
+/home/dtonal/dev/git/crawler/src/main/java/de/dtonal/bundessprech/CrawlerApplication.java
+/home/dtonal/dev/git/crawler/src/main/java/de/dtonal/bundessprech/db/PersonDomain.java
+/home/dtonal/dev/git/crawler/src/main/java/de/dtonal/bundessprech/data/Person.java
+/home/dtonal/dev/git/crawler/src/main/java/de/dtonal/bundessprech/data/Party.java
+/home/dtonal/dev/git/crawler/src/main/java/de/dtonal/bundessprech/CsvParser.java
+/home/dtonal/dev/git/crawler/src/main/java/de/dtonal/bundessprech/data/State.java
+/home/dtonal/dev/git/crawler/src/main/java/de/dtonal/bundessprech/data/Faction.java
