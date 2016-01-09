@@ -23,11 +23,18 @@ public class CrawlerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrawlerApplication.class, args);
-
-		File csvFile = new File("person.csv");
+		ArrayList<Person> persons = null;
+		File homedir = new File(System.getProperty("user.home"));
+		File csvFile = new File(homedir, "/dev/git/crawler/target/person.csv");
+//		File csvFile = new File("~/dev/git/crawler/target/person.csv");
 		if (csvFile != null) {
-			ArrayList<Person> persons = CsvParser.readFromCsvFile(csvFile);
+			persons = CsvParser.readFromCsvFile(csvFile);
 		}
+		if(persons != null && persons.size()> 0)
+		{
+			System.out.println(persons.size() + " persons found.");
+		}
+		
 		for (int i = 0; i < 5; i++) {
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXX");
 		}
