@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-Implementation-Title: crawler
-Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: dtonal
-Implementation-Vendor-Id: de.dtonal.bundessprech
-Build-Jdk: 1.8.0_66
+Built-By: dtonal_user
+Build-Jdk: 1.8.0_51
 Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
-Main-Class: de.dtonal.bundessprech.CrawlerApplication
 

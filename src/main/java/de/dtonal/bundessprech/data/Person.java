@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -27,9 +29,11 @@ public class Person {
 	@Column(name = "electoralDistrictName")
 	private String electoralDistrictName;
 	// german: Fraktion
-	@Column(name = "faction")
-	@Enumerated(EnumType.STRING)
-	private Faction faction;
+	
+	@ManyToOne
+    @JoinColumn(name="FRACTION_ID")
+	private Fraction fraction;
+	
 	@Column(name = "homepageUrl")
 	private URL homepageUrl;
 	@Id
@@ -104,16 +108,16 @@ public class Person {
 	/**
 	 * @return the faction
 	 */
-	public Faction getFaction() {
-		return faction;
+	public Fraction getFraction() {
+		return fraction;
 	}
 
 	/**
 	 * @param faction
 	 *            the faction to set
 	 */
-	public void setFaction(Faction faction) {
-		this.faction = faction;
+	public void setFraction(Fraction fraction) {
+		this.fraction = fraction;
 	}
 
 	/**
@@ -279,6 +283,11 @@ public class Person {
 	 */
 	public void setGender(Gender gender) {
 		this.gender = gender;
+	}
+	
+	public String toString()
+	{
+		return getSurname() + "," + getPrename() + "[" + getFraction() + "]";
 	}
 
 }

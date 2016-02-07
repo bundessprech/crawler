@@ -23,16 +23,12 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-import de.dtonal.bundessprech.data.Faction;
-import de.dtonal.bundessprech.data.Gender;
-import de.dtonal.bundessprech.data.Party;
 import de.dtonal.bundessprech.data.Person;
-import de.dtonal.bundessprech.data.State;
+import de.dtonal.bundessprech.domain.FractionDomain;
 
 /**
- * CsvParser is a Util to extract Bundessprech-Data from csvFiles
- * 
- * @author dtonal
+ * @author dtonal_user
+ *
  */
 public class CsvParser {
 
@@ -43,7 +39,7 @@ public class CsvParser {
 	 *            the csvFile
 	 * @return list of Persons
 	 */
-	static ArrayList<Person> readFromCsvFile(File csvFile) {
+	public static ArrayList<Person> readFromCsvFile(File csvFile) {
 		if (csvFile == null) {
 			return null;
 
@@ -75,28 +71,28 @@ public class CsvParser {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		int counter = 1;
 		for (CSVRecord csvRecord : parser) {
 			if (parser.getCurrentLineNumber() > 1) {
-				System.out.println("Record(" + parser.getCurrentLineNumber() + "): " + csvRecord.get(5));
 				Person person = new Person();
-				// TODO Replace values with constants, maybee from a cfg
-				// file?!
 				person.setDateOfBirth(getDateFromString(csvRecord.get(0)));
 				person.setElectoralDistrictName(csvRecord.get(25));
-				person.setFaction(Faction.fromString(csvRecord.get(31)));
-				person.setGender(Gender.fromString(csvRecord.get(28)));
+				person.setFraction(FractionDomain.getInstance().getFractionFromname(csvRecord.get(31)));				
+				person.setGender(de.dtonal.bundessprech.data.Gender.fromString(csvRecord.get(28)));
 				person.setHomepageUrl(getUrlFromString(csvRecord.get(34)));
 				person.setId(Integer.valueOf(csvRecord.get(7)));
-				person.setParty(Party.fromString(csvRecord.get(4)));
+				person.setParty(de.dtonal.bundessprech.data.Party.fromString(csvRecord.get(4)));
 				person.setPrename(csvRecord.get(14));
 				person.setProfession(csvRecord.get(12));
-				person.setState(State.fromString(csvRecord.get(33)));
+				person.setState(de.dtonal.bundessprech.data.State.fromString(csvRecord.get(33)));
 				person.setSurname(csvRecord.get(5));
 				persons.add(person);
+				System.out.println("Person(" + counter + "): " + person);
+				counter++;
 			}
 		}
 
-		return null;
+		return persons;
 
 	}
 
@@ -129,8 +125,7 @@ public class CsvParser {
 
 		Iterator<String> csvRecordIterator = csvRecord.iterator();
 		int index = 0;
-		while(csvRecordIterator.hasNext())
-		{
+		while (csvRecordIterator.hasNext()) {
 			String value = csvRecordIterator.next();
 			if (value != null && !value.equals("")) {
 				positionMap.put(value, index);
@@ -168,4 +163,5 @@ public class CsvParser {
 		}
 		return date;
 	}
+
 }
